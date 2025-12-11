@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title"><i class="fas fa-store"></i> Наш каталог</h1>
+<p class="page-subtitle">Якісний спортивний одяг українського виробництва</p>
+
+<div class="products-grid">
+    {% for product in products %}
+    <div class="product-card">
+        <div class="flag-label">
+            <i class="fas fa-flag-ukraine"></i> Український бренд
+        </div>
+        <img src="{{ product.image }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <div class="price">{{ product.price }} ₴</div>
+        <button class="add-to-cart" onclick="addToCart({{ product.id }})">
+            <i class="fas fa-cart-plus"></i> Додати до кошика
+        </button>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    function addToCart(productId) {
+        alert('Товар додано до кошика! ID товару: ' + productId);
+        // Тут можна додати логіку для роботи з кошиком
+    }
+</script>
+{% endblock %}
